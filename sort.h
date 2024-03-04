@@ -1,7 +1,9 @@
 #ifndef _SORT_H_
 #define _SORT_H_
 
+#include <stdlib.h>
 #include <stdio.h>
+
 /**
  * struct listint_s - Doubly linked list node
  *
@@ -21,4 +23,9 @@ void selection_sort(int *array, size_t size);
 void swap(int *a, int *b);
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
+void insertion_sort_list(listint_t **list);
+void shell_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
+void counting_sort(int *array, size_t size);
+
 #endif
