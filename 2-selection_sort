@@ -1,0 +1,30 @@
+#include "sort.h"
+/**
+ * selection_sort - function that deals with selection sort
+ * @array: array to be sorted
+ * @size: number of elements in the array
+ *
+ * Return: return void
+ */
+void selection_sort(int *array, size_t size)
+{
+	int value;
+	size_t i, j, index;
+
+	for(i = 0; i < size - 1; i++)
+	{
+		index = i;
+		for(j = i + 1; j < size; j++)
+		{
+			if  (array[j] < array[index])
+				index = j;
+		}
+		if (index != i)
+		{
+			value = array[index];
+			array[index] = array[i];
+			array[i] = value;
+		}
+		print_array(array, size);
+	}
+}
