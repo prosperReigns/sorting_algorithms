@@ -5,7 +5,7 @@ void cocktail_sort_list(listint_t **list)
 	listint_t *node = *list, *before;
 	listint_t *cnode = (*list)->next;
 
-	while(node != NULL)
+	while (node != NULL)
 	{
 		if (node->n > cnode->n)
 		{
@@ -23,7 +23,7 @@ void cocktail_sort_list(listint_t **list)
 		if (node->n >= cnode->n)
 			cnode = node->prev;
 		print_list(*list);
-		while(node != NULL && node->n < cnode->n)
+		while (node != NULL && node->n < cnode->n)
 		{
 			if (node->n < cnode->n)
 			{
