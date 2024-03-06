@@ -8,36 +8,25 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	int value, k, zone = 0;
+	int value, k;
 	size_t i, j, max = array[0];
 	int *count_array = NULL, *new = NULL, count = 0;
 
 	for(i = 1; i < size; i++)
 	{
-		if (max < (size_t)array[i])
+		if ((int)max < array[i])
 			max = array[i];
 	}
 	count_array = malloc(sizeof(int) * (max + 1));
 	new = malloc(sizeof(int) * size);
 	if (count_array == NULL || new == NULL)
 		return;
-	for(i = 0; i < max + 1; i++)
+	for(i = 0; i < max; i++)
 		count_array[i] = 0;
 	for(i = 0; i < size; i++)
 	{
 		value = array[i];
-		if (value == 0 && zone == 0)
-		{
-			for(j = i + 1; j < size; j++)
-			{
-				if (array[j] == value)
-					count++;
-			}
-			count_array[value] = count + 1;
-			count = 0;
-			zone++;
-		}
-		else if(count_array[value] == 0 && value != 0 && value != (int)max)
+		if (value == 0 && count_array[value] == 0)
 		{
 			for(j = i + 1; j < size; j++)
 			{
@@ -47,7 +36,7 @@ void counting_sort(int *array, size_t size)
 			count_array[value] = count + 1;
 			count = 0;
 		}
-		else if(count_array[value] == 0 && value == (int)max)
+		else if(count_array[value] == 0 && value != 0)
 		{
 			for(j = i + 1; j < size; j++)
 			{
@@ -58,7 +47,7 @@ void counting_sort(int *array, size_t size)
 			count = 0;
 		}
 	}
-	for(i = 1; i < max - 1; i++)
+	for(i = 1; i < max + 2; i++)
 		count_array[i] += count_array[i - 1];
 	print_array(count_array, max + 1);
 	for(k = size - 1; k >= 0; k--)

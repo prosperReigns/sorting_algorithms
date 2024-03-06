@@ -13,14 +13,14 @@ void cocktail_sort_list(listint_t **list)
 			(node->prev)->next = cnode;
 			node->next = cnode->next;
 			cnode->prev = node->prev;
-			cnode->next = node->next;
+			cnode->next = node;
 			node->prev = cnode;
 			before = cnode;
 			cnode = node;
 			node = before;
 		}
 		print_list(*list);
-		if (node->n >= cnode->n)
+		if (node->n <= cnode->n)
 			cnode = node->prev;
 		print_list(*list);
 		while(node != NULL && node->n < cnode->n)
