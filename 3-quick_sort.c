@@ -51,7 +51,7 @@ int partition(int *array, int low, int high)
         {
             if (count1 < count2)
             {
-                swap_values(&array[count1], &array[count2]);
+                quick_swap(&array[count1], &array[count2]);
                 print_array(array, (high + 1));
             }
             count1++;
@@ -60,7 +60,7 @@ int partition(int *array, int low, int high)
 
     if (array[count1] > pivot)
     {
-        swap_values(&array[count1], &array[high]);
+        quick_swap(&array[count1], &array[high]);
         print_array(array, (high + 1));
     }
     
@@ -68,7 +68,7 @@ int partition(int *array, int low, int high)
     return (count1);
 }
 
-void swap_values(int *a, int *b)
+void quick_swap(int *a, int *b)
 {
     int temp;
 
