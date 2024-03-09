@@ -11,18 +11,18 @@ void shell_sort(int *array, size_t size)
 	int value;
 	size_t i, j, h = 1;
 
-	while(h < size)
+	while (h < size)
 	{
 		h = (h * 3) + 1;
 	}
 	h /= 3; /*because the h has to be less than array size*/
-	while(h > 0)
+	while (h > 0)
 	{
-		for(i = h; i < size; i++)
+		for (i = h; i < size; i++)
 		{
 			value = array[i];
 			j = i;
-			while(j >= h && array[j - h] > value)
+			while (j >= h && array[j - h] > value)
 			{
 				array[j] = array[j - h];
 				j = j - h;
