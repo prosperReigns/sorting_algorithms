@@ -11,6 +11,8 @@ void quick_sort(int *array, size_t size)
     int low = 0;
     int high = size - 1;
 
+    if (size < 2 || array == NULL)
+        return;
    quick_sort_array(array, low, high);
 }
 
@@ -39,27 +41,38 @@ void quick_sort_array(int *array, int low, int high)
 
 int partition(int *array, int low, int high)
 {
-    int i, pivot, j, temp1, temp2;
+    int pivot, count1, count2;
 
-    i = low - 1;
     pivot = array[high];
 
-    for (j = low; j <= high - 1; j++)
+    for (count1 = count2 = low; count2 < high - 1; count2++)
     {
-        if (array[j] < pivot)
+        if (array[count2] < pivot)
         {
-            i++;
-            temp1 = array[i];
-            array[i] = array[j];
-            array[j] = temp1;
-            print_array(array, high + 1);
+            if (count1 < count2)
+            {
+                swap_values(&array[count1], &array[count2]);
+                print_array(array, (high + 1));
+            }
+            count1++;
         }
     }
-  
-    temp2 = array[i + 1];
-    array[i + 1] = array[high];
-    array[high] = temp2;
-    print_array(array, high + 1);
 
-    return (i + 1);
+    if (array[count1] > pivot)
+    {
+        swap_values(&array[count1], &array[high]);
+        print_array(array, (high + 1));
+    }
+    
+
+    return (count1);
+}
+
+void swap_values(int *a, int *b)
+{
+    int temp;
+
+    temp = *a;
+    *a = *b;
+    *b = temp;
 }
