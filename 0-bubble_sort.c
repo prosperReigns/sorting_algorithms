@@ -31,16 +31,16 @@ void bubble_sort(int *array, size_t size)
 }
 
 /**
- * swap - swaps two values
+ * bubble_swap - swaps two values
  * @a: first value to swap
  * @b: second value to swap
-*/
+ */
 
 void bubble_swap(int *a, int *b)
 {
-    int temp;
+	int temp;
 
-    temp = *a;
-    *a = *b;
-    *b = temp;
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }
