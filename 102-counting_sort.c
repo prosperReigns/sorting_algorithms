@@ -40,17 +40,57 @@ void counting_sort(int *array, size_t size)
 	new = malloc(sizeof(int) * size);
 	if (count_array == NULL || new == NULL)
 		return;
+<<<<<<< HEAD
 	for (i = 0; i <= max + 1; i++)
+=======
+	for (i = 0; i < max + 1; i++)
+>>>>>>> e2baa12934bf67f03348b79cde4c33cecf3d4079
 		count_array[i] = 0;
 	for (i = 0; i < size; i++)
 	{
 		value = array[i];
+<<<<<<< HEAD
 		if (value == 0 && count_array[value] == 0)
 			determine(array, count_array, size, i, value);
 		else if (count_array[value] == 0 && value != 0)
 			determine(array, count_array, size, i, value);
 	}
 	for (i = 1; i < max + 2; i++)
+=======
+		if (value == 0 && zone == 0)
+		{
+			for(j = i + 1; j < size; j++)
+			{
+				if (array[j] == value)
+					count++;
+			}
+			count_array[value] = count + 1;
+			count = 0;
+			zone++;
+		}
+		else if (count_array[value] == 0 && value != 0 && value != (int)max)
+		{
+			for(j = i + 1; j < size; j++)
+			{
+				if (array[j] == value)
+					count++;
+			}
+			count_array[value] = count + 1;
+			count = 0;
+		}
+		else if (count_array[value] == 0 && value == (int)max)
+		{
+			for(j = i + 1; j < size; j++)
+			{
+				if (array[j] == value)
+					count++;
+			}
+			count_array[value] = count + 1;
+			count = 0;
+		}
+	}
+	for (i = 1; i < max - 1; i++)
+>>>>>>> e2baa12934bf67f03348b79cde4c33cecf3d4079
 		count_array[i] += count_array[i - 1];
 	print_array(count_array, max + 1);
 	for (k = size - 1; k >= 0; k--)
