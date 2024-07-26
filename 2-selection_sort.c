@@ -1,73 +1,45 @@
 #include "sort.h"
 
 /**
- * selection_sort - sorts a list of number in ascending order
- * @array: an array of numbers
- * @size: size of the array
-*/
-void selection_sort(int *array, size_t size)
+ * swap_ints - Swap two integers in an array.
+ * @a: The first integer to swap.
+ * @b: The second integer to swap.
+ */
+void swap_ints(int *a, int *b)
 {
-<<<<<<< HEAD
-	size_t i, j;
-	int minindex, temp;
+	int tmp;
 
-	for (i = 0; i < size - 1; i++)
-	{
-		minindex = i;
-		for (j = i + 1; j < size; j++)
-		{
-			value = array[j];
-			if (value < array[minindex])
-				minindex = j;
-		}
-		temp = array[i];
-		array[i] = array[minindex];
-		array[minindex] = temp;
-		print_array(array, size);
-	}
-=======
-    size_t i, j;
-    int minindex;
-
-    if (size < 2 || array == NULL)
-        return;
-
-    for (i = 0; i < size - 1; i++)
-    {
-        minindex = i;
-
-        for (j = i + 1; j < size; j++)
-        {
-            if (array[j] < array[minindex])
-            {
-                minindex = j;
-            }
-            else
-            {
-                minindex = minindex;
-            }
-        }
-
-        if (array[i] != minindex)
-        {
-            selection_swap(&array[i], &array[minindex]);
-            print_array(array, size);
-        }
-    }
->>>>>>> e2baa12934bf67f03348b79cde4c33cecf3d4079
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 /**
- * insertion_swap - swaps two values
- * @a: first value to swap
- * @b: second value to swap
-*/
-
-void selection_swap(int *a, int *b)
+ * selection_sort - Sort an array of integers in ascending order
+ *                  using the selection sort algorithm.
+ * @array: An array of integers.
+ * @size: The size of the array.
+ *
+ * Description: Prints the array after each swap.
+ */
+void selection_sort(int *array, size_t size)
 {
-    int temp;
+	int *min;
+	size_t i, j;
 
-    temp = *a;
-    *a = *b;
-    *b = temp;
+	if (array == NULL || size < 2)
+		return;
+
+	for (i = 0; i < size - 1; i++)
+	{
+		min = array + i;
+		for (j = i + 1; j < size; j++)
+			min = (array[j] < *min) ? (array + j) : min;
+
+		if ((array + i) != min)
+		{
+			swap_ints(array + i, min);
+			print_array(array, size);
+		}
+	}
 }
